@@ -34,6 +34,7 @@ use OCA\UserCAS\Controller\AuthenticationController;
 use OCA\UserCAS\User\Backend;
 use OCA\UserCAS\User\NextBackend;
 use OCA\UserCAS\Service\LoggingService;
+use Psr\Log\LoggerInterface;
 
 /**
  * Class Application
@@ -73,7 +74,7 @@ class Application extends App
         });
 
         $container->registerService('Logger', function (IContainer $c) {
-            return $c->query('ServerContainer')->getLogger();
+            return $c->query('ServerContainer')->get(LoggerInterface::class);
         });
 
         /**
