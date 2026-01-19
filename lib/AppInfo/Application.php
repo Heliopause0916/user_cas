@@ -25,6 +25,7 @@ namespace OCA\UserCAS\AppInfo;
 
 use \OCP\AppFramework\App;
 use \OCP\IContainer;
+use \Psr\Log\LoggerInterface;
 
 use OCA\UserCAS\Service\UserService;
 use OCA\UserCAS\Service\AppService;
@@ -73,7 +74,7 @@ class Application extends App
         });
 
         $container->registerService('Logger', function (IContainer $c) {
-            return $c->query('ServerContainer')->getLogger();
+            return $c->query(\Psr\Log\LoggerInterface::class);
         });
 
         /**
